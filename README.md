@@ -25,7 +25,7 @@
     const $ = cheerio.load(data.res); //将html转换为可操作的节点
 </code></pre>
     
-此时，我们要对我们即将进行爬取的页面进行分析。[](www.mzitu.com/125685/ "www.mzitu.com/125685")，这是我们进行爬取的网址，F12查看DOM结构，根据这个结构我们可以使用$(".main-image").find("img")[0].attribs.src来爬取这张图片的地址（如果不知道为什么是attribs.src的话可以一步一步console.log()一下看看）。<br />
+此时，我们要对我们即将进行爬取的页面进行分析。[](www.mzitu.com/125685/ "www.mzitu.com/125685")，[an example](http://example.com/ "Title")这是我们进行爬取的网址，F12查看DOM结构，根据这个结构我们可以使用$(".main-image").find("img")[0].attribs.src来爬取这张图片的地址（如果不知道为什么是attribs.src的话可以一步一步console.log()一下看看）。<br />
 最后，到了最关键的时候，我们使用fs模块进行创建文件夹以及下载文件。这里用到了fs模块的几个指令：<br />
 　　　　1.fs.mkdirSync(downloadPath)：查看是否存在这个文件夹。<br />
 　　　　2.fs.mkdirSync(downloadPath)：创建文件夹。<br />
