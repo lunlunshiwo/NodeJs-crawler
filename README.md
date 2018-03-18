@@ -7,16 +7,18 @@
 ## 博文
 好的，我们从爬虫流程开始分析我们需要的一些模块。<br />
 首先，我们需要发送请求获得页面，在这里呢，我们用到了request-promise模块。<br />
-    const rp = require("request-promise"), //进入request-promise模块<br />
-      async getPage(URL) {<br />
-        const data = {<br />
+<pre><code>
+    const rp = require("request-promise"), //进入request-promise模块
+      async getPage(URL) {
+        const data = {
           url, <br />
-          res: await rp({<br />
-             url: URL<br />
-          }) <br />
-      }; <br />
-      return data //这样，我们返回了一个对象，就是这个页面的url和页面内容。<br />
-    }<br />
+          res: await rp(
+             url: URL
+          }) 
+      }; 
+      return data //这样，我们返回了一个对象，就是这个页面的url和页面内容。
+    }
+</code></pre>
 其次，解析页面，我们使用一个叫做Cheerio的模块将上面返回的对象中的res解析成类似JQ的调用模式。Cheerio使用一个非常简单，一致的DOM模型。因此解析，操作和渲染非常高效。初步的端到端基准测试表明cheerio 比JSDOM快大约8倍。<br />
     const cheerio = require("cheerio");//引入Cheerio模块<br />
     const $ = cheerio.load(data.res); //将html转换为可操作的节点<br />
